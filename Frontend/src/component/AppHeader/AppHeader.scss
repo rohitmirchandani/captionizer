@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+
+.app-header{
+    // border:1px solid black;
+    padding:0 20px;
+    display:flex;
+    z-index: 5;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 3px 3px #ffccd5;
+    h1{
+        font-family: 'EntezareZohoor2';
+        font-size:3em;
+        letter-spacing: 3.5px;
+        font-weight: 100;
+        color:#444;
+    }
+    h4{
+        margin-top:15px;
+        font-family: 'Cinzel', sans-serif;
+        font-weight: 100;
+        letter-spacing: 1px;
+        font-size: 0.85em;
+    }
+    .navigations-div{
+        // border:3px solid black;
+        display:flex;
+        align-items: center;
+        img{
+            width:60px;
+            transition: 0.2s ease-in-out;
+            // border-radius: 10px;
+            padding:0;
+            margin-right:30px;
+        }
+        .image-logo{
+            width:55px;
+        }
+        img:hover{
+            background-color: #bde0fe;
+            padding:3px;
+            border-radius: 10px;
+        }
+    }
+   
+}
+@media (max-width:810px){
+    .app-header{
+        // background-color: black;
+        flex-direction: column;
+    }
+    .navigations-div{
+        margin-top:10px;
+    }
+}

@@ -1,0 +1,255 @@
+@keyframes fadeInDown {
+   from {
+      opacity: 0;
+      transform: translateY(-30px);
+   }
+
+   to {
+      opacity: 1;
+      transform: translateY(0px);
+   }
+}
+
+@keyframes background-animation {
+   from {
+      background-position: 0;
+   }
+
+   to {
+      background-position: 0 450px;
+   }
+}
+
+@keyframes bounce {
+   0% {
+      opacity: 1;
+      transform: translateY(0px);
+   }
+
+   50% {
+      opacity: 0.7;
+      transform: translateY(-20px);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translate(0px);
+   }
+}
+
+.chosen-file-div h4 {
+   color: white;
+   text-shadow: 0px 1px 0 #999;
+   // border-top:4px dashed #444;
+   background-color: #444;
+   opacity: 0;
+   transition: 0.1s ease;
+   color: white;
+}
+
+.image-uploader-wrapper {
+   min-height:400px;
+   display: flex;
+   // display:none;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 20px;
+   overflow: hidden;
+
+   .display-box::before {
+      // animation: background-animation 20s linear infinite;
+      content: '';
+      position: absolute;
+      width: 1000%;
+      height: 1000%;
+      background: repeating-linear-gradient(white 0%,
+            white 7.5px,
+            #ffc8dd 7.5px,
+            #ffc8dd 15px,
+            white 15px,
+            white 22.5px,
+            #ffc8dd 22.5px,
+            #ffc8dd 30px);
+      transform: translateX(-20%) translateY(-20%) rotate(-45deg);
+   }
+
+   .display-box {
+      box-shadow: 0 0 2px deeppink,
+         0 0 5px rgba(0, 0, 0, 1),
+         inset 0 0 5px rgba(0, 0, 0, 1);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #fbfbfb;
+      height: 400px;
+      width: 100%;
+      padding: 20px;
+
+      .upload-text {
+         text-align: center;
+         width: 100%;
+
+         h4 {
+            width: 100%;
+            padding: 2px;
+         }
+      }
+
+      &:hover,
+      &.drag-over {
+         .icon-text-box {
+            background-color: #e2006d;
+            cursor: pointer;
+            color: #fff;
+            //  opacity:0.5;
+            text-shadow: 0px 1px 0 #999;
+
+            .upload-icon {
+               transform: translateY(-20px);
+               animation: bounce 1s ease-in-out infinite;
+            }
+
+            .chosen-file-div h4 {
+               opacity: 1;
+               transition: 0.1s ease;
+            }
+
+         }
+
+         .file-selected {
+            background-color: #fbfbfb !important;
+         }
+      }
+
+      &.drag-over {
+         &::before {
+            animation: background-animation 20s linear infinite;
+         }
+      }
+
+      .icon-text-box {
+         box-shadow: 0 0 2px deeppink,
+            0 0 5px rgba(0, 0, 0, 1),
+            inset 0 0 5px rgba(0, 0, 0, 1);
+         border-radius: 10px;
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: contain;
+         position: relative;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         background-color: #fbfbfb;
+         border-radius: 20px;
+         width: 100%;
+         height: 100%;
+         text-shadow: 0px 0px 0 #999;
+         transition: background-color 0.2s ease-in, color 0.2s ease-in, border-color 0.2s ease-in, text-shadow 0.2s ease-in;
+
+         .upload-icon {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            box-sizing: border-box;
+            transform: translateY(0px);
+            transition: transform 0.1s ease-in-out;
+            overflow-y: hidden;
+
+            i.fa.fa-upload {
+               width: 100px;
+               height: 100px;
+               font-size: 100px;
+            }
+         }
+
+         .upload-button,
+         .cancel-upload-button {
+            margin: 10px;
+            position: relative;
+            z-index: 6;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background-color: #fbfbfb;
+            border: 2px solid #1A1A1A;
+            border-radius: 15px;
+            box-sizing: border-box;
+            color: #3B3B3B;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            will-change: transform;
+
+            &:disabled {
+               pointer-events: none;
+             }
+             
+            &:hover {
+               color: #fff;
+               background-color: #1A1A1A;
+               box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+               transform: translateY(-2px);
+             }
+             
+            &:active {
+               box-shadow: none;
+               transform: translateY(0);
+             }
+         }
+
+         .upload-button:hover {
+            background-color: #b7e4c7;
+         }
+
+         .cancel-upload-button:hover {
+            background-color: #f4acb7;
+         }
+
+         .error-notification {
+            animation: fadeInDown 0.5s;
+            position: absolute;
+            top: 20px;
+            background-color: #dfb852;
+            border-radius: 5px;
+            color: #444;
+            padding: 5px 10px;
+
+            p {
+               margin: 0;
+               text-shadow: none;
+            }
+         }
+      }
+
+      .upload-image-input {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         opacity: 0;
+         cursor: pointer;
+      }
+   }
+
+   @media (min-width: 768px) {
+      .display-box {
+         width: 600px;
+      }
+   }
+}

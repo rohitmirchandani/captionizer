@@ -1,0 +1,48 @@
+
+
+.image-captionizer{
+    width:100vw;
+    // overflow-y:hidden;
+    background-color: transparent;
+    display:flex;
+    flex-direction: column;
+    // justify-content: center;
+    overflow:visible;
+    // border:2px solid black;
+    // align-items: center;
+    &>p{
+        // font-family: 'Passion One', cursive;
+        font-family: sans-serif;
+        margin:20px;
+        font-size: 2em;
+        text-align: justify;
+        color:#ff4d6d;
+        color:#999;
+        font-weight: 200;
+        text-align: center;
+        width:100%;
+    }
+    .image-upload-div{
+        // border:1px solid black;
+        &>img{
+            width:400px;
+            position:absolute;
+            left:0;
+            // border:1px solid black;
+            top:110px;
+        }
+    }
+    
+}
+@media (max-width:1040px){
+    .image-upload-div{
+        .image-uploader-wrapper{
+            margin-top:240px;
+        }
+        &>img{
+            top:210px !important;
+        }
+    }
+    
+
+}
