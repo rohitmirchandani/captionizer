@@ -5,7 +5,7 @@ import errorimg from "./errorimg.png"
 class FetchError extends React.Component{
     constructor(props){
         super(props);
-        console.log(props);
+        // console.log(props);
     }
     render(){
         return (

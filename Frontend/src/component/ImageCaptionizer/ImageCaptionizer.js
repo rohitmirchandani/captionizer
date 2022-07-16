@@ -26,7 +26,7 @@ class ImageCaptionizer extends React.Component{
         reader.onload = ()=>{
             this.setState({loading:true})
             let bstring = reader.result.replace("data:","").replace(/^.+,/,"");
-            console.log(bstring.length);
+            // console.log(bstring.length);
             fetch('http://localhost:5000',{
                 method:'POST', 
                 headers:{
@@ -57,10 +57,10 @@ class ImageCaptionizer extends React.Component{
         })
     }
     render(){
-        console.log(this.state.quotes)
+        // console.log(this.state.quotes)
         return (
             <div className="image-captionizer">
-                <p>Drop your Image here and allow us to suggest you some beatiful quotes.</p>
+                <p>Drop your Image here and allow us to suggest you some beautiful quotes.</p>
                 <div className = 'image-upload-div'>
                     <img src = {hiImage} />    
                     <ImageUploader onUpload = {this.onUpload} nullifyQuotes = {this.nullifyQuotes}></ImageUploader>

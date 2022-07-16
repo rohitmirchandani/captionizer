@@ -3,7 +3,6 @@ import './KeywordCaptionizer.scss'
 import QuoteDisplay from '../QuoteDisplay/QuoteDisplay';
 import Loader from '../Loader/Loader';
 import FetchError from '../FetchError/FetchError';
-import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
 class KeywordCaptionizer extends React.Component{
     lastKeyPress
@@ -47,7 +46,7 @@ class KeywordCaptionizer extends React.Component{
         document.querySelector(`.kw-div:nth-child(${index+1})`).classList.add('scale-out');
         this.setState({
             keywords:this.state.keywords.filter((keyword,i)=>{
-                return index != i
+                return index !== i
             })
         })
     }
@@ -59,14 +58,14 @@ class KeywordCaptionizer extends React.Component{
     validateKeyword(keyword){
         let warning = null;
         keyword = keyword.trim();
-        if(this.state.keywords.length == 20){
+        if(this.state.keywords.length === 20){
             warning = 'You cannot add more than 20 keywords at a time.'
         }else if(keyword === ''){
-            warning = 'You cannot add empty add keywords please.'
+            warning = 'You might have forgot to add some text.'
         }else if(!keyword.match(/^[a-zA-Z0-9]*$/)){
             warning = 'You can only add alphanumeric keywords please.'
-        }else if(this.state.keywords.find((val)=>val == keyword) !== undefined){
-            warning = 'This keyword already exists.'
+        }else if(this.state.keywords.find((val)=>val === keyword) !== undefined){
+            warning = 'Repeating keywords doesn\'t make sense.'
         }
         if(warning === null)return true;
         
@@ -109,9 +108,9 @@ class KeywordCaptionizer extends React.Component{
         })
     }
     handleKeydown(){
-        let cond = this.lastKeyPress == -1;
+        let cond = this.lastKeyPress === -1;
         if(cond){
-            console.log("keydown")
+            // console.log("keydown")
             document.getElementById('input-div').classList.add('typing');
         }
         this.lastKeyPress = Date.now();

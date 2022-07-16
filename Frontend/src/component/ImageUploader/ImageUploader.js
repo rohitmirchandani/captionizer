@@ -41,7 +41,7 @@ class ImageUploader extends React.Component {
        let file = e.dataTransfer.files[0];
        let fileType = file.type.split("/")[0];
        if (fileType !== "image") {
-          console.log("Not an image file");
+         //  console.log("Not an image file");
           this.setState({
              file: null,
              errorNotification: "Not an image File",
@@ -72,7 +72,7 @@ class ImageUploader extends React.Component {
        // Validate file is of type Image
        let fileType = this.refs.image.files[0].type.split('/')[0];
        if (fileType !== "image") {
-          console.log("Not an image file");
+         //  console.log("Not an image file");
           this.setState({
              file: null,
              errorNotification: "Not an image File",
@@ -96,7 +96,7 @@ class ImageUploader extends React.Component {
     handleUploadImage(e) {
        e.preventDefault();
        if (this.refs.image.files[0]) {
-          console.log("Uploading Image " + this.refs.image.files[0].name + "");
+         //  console.log("Uploading Image " + this.refs.image.files[0].name + "");
           this.props.onUpload(this.refs.image.files[0])
        }
     }

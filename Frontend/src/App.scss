@@ -4,7 +4,9 @@
   font-weight: normal;
   font-style: normal;
 }
-
+::selection{
+  background-color: #bde0fe;
+}
 .app {
   z-index: 2;
   background-color: transparent;
