@@ -14,6 +14,8 @@ from object_detection import captionize
 from object_detection import keywordize
 from object_detection import init
 
+
+
 app = Flask(__name__)
 CORS(app)
 cors = CORS(app, resources={
@@ -26,6 +28,7 @@ init()
 
 app.debug = False
 
+  
 
 @app.route('/', methods=['POST'])
 def index():
