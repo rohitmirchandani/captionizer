@@ -56,7 +56,7 @@ opt-einsum==3.3.0
 panda==0.3.1
 pandas==1.1.5
 Pillow==8.3.2
-pkg_resources==0.0.0
+pkg_resources
 progressbar==2.5
 protobuf==3.18.1
 pyasn1==0.4.8
