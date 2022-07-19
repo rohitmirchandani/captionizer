@@ -9,7 +9,7 @@ click==8.0.4
 cors==1.0.1
 cvlib==0.2.7
 cycler
-dataclasses==0.8
+dataclasses
 deepface==0.0.68
 face-recognition==1.3.0
 face-recognition-models==0.3.0
