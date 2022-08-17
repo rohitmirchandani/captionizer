@@ -74,13 +74,13 @@ def keywordize(objects):
     # print("getting queries...")
     quotes = []
     authors = []
-    if len(objects) != 0:
-        response = requests.request("GET", url)
-        results = response.json()["results"]
-        print(results)
-        for result in results:
-            quotes.append(result["content"])
-            authors.append(result["author"])
+    # if len(objects) != 0:
+    #     response = requests.request("GET", url)
+    #     results = response.json()["results"]
+    #     print(results)
+    #     for result in results:
+    #         quotes.append(result["content"])
+    #         authors.append(result["author"])
     
     return [authors, quotes]
 
