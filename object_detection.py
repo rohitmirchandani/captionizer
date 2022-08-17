@@ -12,7 +12,7 @@ def init():
 def captionize():
     
     img = plt.imread('temp.jpg')
-    print(img)
+    # print(img)
     img = cv2.cvtColor(img,cv2.COLOR_RGBA2RGB)
     # print("hello")
     objects = set(cv.detect_common_objects(img)[1])
