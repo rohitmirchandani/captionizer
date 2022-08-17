@@ -52,7 +52,9 @@ def captionize():
     return keywordize(objects)
 
 def keywordize(objects):
+    objects = ["hello", "smart", "boy"]
     objects = set(objects)
+    
     synonyms = set()
     for object in objects:
         for synset in wordnet.synsets(object):
@@ -65,6 +67,7 @@ def keywordize(objects):
 
     objects.update(synonyms)
     objects = list(objects)
+    
     # print(objects)
     queries = map(querise, objects)
 
