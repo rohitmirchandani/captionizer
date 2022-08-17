@@ -15,7 +15,8 @@ def captionize():
     # print(img)
     img = cv2.cvtColor(img,cv2.COLOR_RGBA2RGB)
     # print("hello")
-    objects = set(cv.detect_common_objects(img)[1])
+    # objects = set(cv.detect_common_objects(img)[1])
+    objects = []
     print("objects detected...")
     # synonyms = set()
     # for object in objects:
@@ -74,13 +75,13 @@ def keywordize(objects):
     # print("getting queries...")
     quotes = []
     authors = []
-    # if len(objects) != 0:
-    #     response = requests.request("GET", url)
-    #     results = response.json()["results"]
-    #     print(results)
-    #     for result in results:
-    #         quotes.append(result["content"])
-    #         authors.append(result["author"])
+    if len(objects) != 0:
+        response = requests.request("GET", url)
+        results = response.json()["results"]
+        print(results)
+        for result in results:
+            quotes.append(result["content"])
+            authors.append(result["author"])
     
     return [authors, quotes]
 
