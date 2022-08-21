@@ -1,12 +1,9 @@
-from re import template
-from urllib import response
 from regex import F
 # import base64
 from requests import request
-from flask import Flask, render_template,request, jsonify, send_from_directory
+from flask import Flask,request
 from flask_cors import CORS
 import json
-import os
 from PIL import Image
 from io import BytesIO
 from base64 import b64decode

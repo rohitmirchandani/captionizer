@@ -1,6 +1,12 @@
+from contextlib import nullcontext
 import cv2
-import cvlib as cv
-import matplotlib.pyplot as plt
+from imageai.Detection import ObjectDetection
+import numpy
+import matplotlib
+
+# import cvlib as cv
+
+# import matplotlib.pyplot as plt
 from nltk.corpus import wordnet
 import nltk
 import requests
@@ -8,15 +14,29 @@ import requests
 def init():
     nltk.download('wordnet')
     nltk.download('omw-1.4')
+    global detector
+    detector = ObjectDetection()
+    model_path = "yolo-tiny.h5"
+    detector.setModelTypeAsTinyYOLOv3()
+    detector.setModelPath(model_path)
+    detector.loadModel(detection_speed = "faster")
+
 
 def captionize():
     
-    img = plt.imread('temp.jpg')
+    img = cv2.imread('temp.jpg')
     # print(img)
     img = cv2.cvtColor(img,cv2.COLOR_RGBA2RGB)
-    # print("hello")
+    img = cv2.resize(img, (200, int((len(img)/len(img[0])*200))))
+    img = numpy.pad(img, ((100,100),(100,100),(0,0)))
+
     # objects = set(cv.detect_common_objects(img)[1])
-    objects = []
+    
+    objects = set()
+    output = detector.detectObjectsFromImage(input_image=img, input_type="array", minimum_percentage_probability = 10 ,output_type = "array")[1]
+    for i in output:
+        objects.add(i['name'])
+    print(objects)
     print("objects detected...")
     # synonyms = set()
     # for object in objects:
@@ -52,7 +72,6 @@ def captionize():
     return keywordize(objects)
 
 def keywordize(objects):
-    objects = ["hello", "smart", "boy"]
     objects = set(objects)
     
     synonyms = set()
@@ -79,12 +98,17 @@ def keywordize(objects):
     quotes = []
     authors = []
     if len(objects) != 0:
+        unique = set()
         response = requests.request("GET", url)
         results = response.json()["results"]
-        print(results)
+        # print(results)
         for result in results:
-            quotes.append(result["content"])
-            authors.append(result["author"])
+            key = result["content"] + " " + result["author"]
+            if key not in unique:
+                quotes.append(result["content"])
+                authors.append(result["author"])
+                unique.add(key)
+            
     
     return [authors, quotes]
 
