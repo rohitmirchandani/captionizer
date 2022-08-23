@@ -1,8 +1,6 @@
-from contextlib import nullcontext
 import cv2
 from imageai.Detection import ObjectDetection
 import numpy
-import matplotlib
 
 # import cvlib as cv
 
