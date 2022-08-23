@@ -7,5 +7,5 @@ opencv-python-headless
 requests
 nltk
 Pillow
-tensorflow
+tensorflow<=1.15.5
 keras
