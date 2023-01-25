@@ -47,7 +47,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd rock-paper-scissors-online
+  cd captionizer
 ```
 Go to backend and install dependencies 
 
